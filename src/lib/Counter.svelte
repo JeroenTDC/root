@@ -1,14 +1,18 @@
 <script lang="ts">
-	let count = 0;
+	let count: number = 0;
 
 	const increment = (): void => {
 		count += 1;
 	};
+	const decrement = (): void => {
+		count -= 1;
+	};
 </script>
 
-<button on:click={increment}>
-	Clicks: {count}
-</button>
+<button on:click={increment}> Increment </button>
+<button on:click={decrement}> Decrement </button>
+
+<div>{count}</div>
 
 <style lang="scss">
 	button {
