@@ -1,6 +1,5 @@
 <script>
 	let disabled = false;
-	let disabled2 = false;
 	let promise = Promise.resolve([]);
 
 	async function fetchUsers() {
@@ -18,13 +17,6 @@
 
 	function fetchPromise() {
 		promiseMe = fetch('https://celoapp.herokuapp.com/survey');
-		disabled = true;
-		console.log(promiseMe);
-	}
-
-	function fetchPromise2() {
-		promiseMe = fetch('https://ghibliapi.herokuapp.com/people');
-		disabled2 = true;
 		console.log(promiseMe);
 	}
 
@@ -33,13 +25,6 @@
 		// promise = fetchUsers();
 		fetchPromise();
 		disabled = true;
-	}
-
-	function handleClick2() {
-		// Now set it to the real fetch promise
-		// promise = fetchUsers();
-		fetchPromise2();
-		disabled2 = true;
 	}
 
 	let questions = [
