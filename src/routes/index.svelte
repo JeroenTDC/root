@@ -17,7 +17,10 @@
 
 	function fetchPromise() {
 		//promiseMe = fetch('https://ghibliapi.herokuapp.com/people');
-		promiseMe = fetch('https://celoapp.herokuapp.com/survey');
+		promiseMe = fetch('https://celoapp.herokuapp.com/survey', {
+			credentials: 'same-origin',
+			mode: 'no-cors'
+		});
 		disabled = true;
 		console.log(promiseMe);
 	}
