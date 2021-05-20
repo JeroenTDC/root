@@ -1,5 +1,6 @@
 <script>
 	let disabled = false;
+	let disabled2 = false;
 	let promise = Promise.resolve([]);
 
 	async function fetchUsers() {
@@ -16,10 +17,14 @@
 	let promiseMe;
 
 	function fetchPromise() {
-		//promiseMe = fetch('https://ghibliapi.herokuapp.com/people');
 		promiseMe = fetch('https://celoapp.herokuapp.com/survey');
-		//promiseMe = fetch('https://celoapp.herokuapp.com/survey');
 		disabled = true;
+		console.log(promiseMe);
+	}
+
+	function fetchPromise2() {
+		promiseMe = fetch('https://ghibliapi.herokuapp.com/people');
+		disabled2 = true;
 		console.log(promiseMe);
 	}
 
@@ -28,6 +33,13 @@
 		// promise = fetchUsers();
 		fetchPromise();
 		disabled = true;
+	}
+
+	function handleClick2() {
+		// Now set it to the real fetch promise
+		// promise = fetchUsers();
+		fetchPromise2();
+		disabled2 = true;
 	}
 
 	let questions = [
@@ -87,7 +99,8 @@
 </script>
 
 <!-- Stop hitting GitHub on every source edit -->
-<button on:click={handleClick} {disabled}> Load Users </button>
+<button on:click={handleClick} {disabled}> Not working: celoapp </button>
+<button on:click={handleClick2} disabled={disabled2}> Working: ghibliapi </button>
 
 {#await promise}
 	<p>...waiting</p>
