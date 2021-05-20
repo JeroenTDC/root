@@ -84,8 +84,7 @@
 </script>
 
 <!-- Stop hitting GitHub on every source edit -->
-<button on:click={handleClick} {disabled}> Not working: celoapp </button>
-<button on:click={handleClick2} disabled={disabled2}> Working: ghibliapi </button>
+<button on:click={handleClick} {disabled}> Send poor Mads somemoney!</button>
 
 {#await promise}
 	<p>...waiting</p>
