@@ -57,16 +57,18 @@
 
 <main>
 	{#each questions as question}
-		<div class="question">{question.question}</div>
-		<ul>
-			{#each question.answers as answer, idx}
-				<li>
-					<input type="radio" id={answer} name={question.id} />
-					<label for={answer}>{answer}</label>
-					<div class="radiobutton" />
-				</li>
-			{/each}
-		</ul>
+		<div class="question">
+			<div class="question-heading">{question.question}</div>
+			<ul>
+				{#each question.answers as answer, idx}
+					<li>
+						<input type="radio" id={answer} name={question.id} />
+						<label for={answer}>{answer}</label>
+						<div class="radiobutton" />
+					</li>
+				{/each}
+			</ul>
+		</div>
 	{/each}
 </main>
 
