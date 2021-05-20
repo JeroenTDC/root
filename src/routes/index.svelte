@@ -1,17 +1,7 @@
 <script>
 	let disabled = false;
-	let promise = Promise.resolve([]);
 
-	async function fetchUsers() {
-		const response = await self.fetch('https://api.github.com/users?per_page=5');
-		//const response = await self.fetch('https://celoapp.herokuapp.com/survey');
-
-		if (response.ok) {
-			return response.json();
-		} else {
-			throw new Error();
-		}
-	}
+	let show = false;
 
 	let promiseMe;
 
@@ -25,6 +15,7 @@
 		// promise = fetchUsers();
 		fetchPromise();
 		disabled = true;
+		show = true;
 	}
 
 	let questions = [
@@ -83,19 +74,6 @@
 	console.log(questions);
 </script>
 
-<!-- Stop hitting GitHub on every source edit -->
-<button on:click={handleClick} {disabled}> Send poor Mads somemoney!</button>
-
-{#await promise}
-	<p>...waiting</p>
-{:then users}
-	{#if users.length > 0}
-		<p>You did it! {users.length}</p>
-	{/if}
-{:catch error}
-	<p style="color: red">{error.message}</p>
-{/await}
-
 <div class="prev-btn"><span class="fa fa-angle-up" /></div>
 <div class="next-btn">Press ENTER or <span class="fa fa-angle-down">Continue</span></div>
 <div class="nav-dots">
@@ -131,10 +109,15 @@
 	<div class="trans-layer" id="layer-8" />
 	<section class="section" id="section-8">
 		<div class="section-content final">
-			<img class="yaw" src="handshake.gif" />
-			<h1>You did it!</h1>
-			<p>Use the close-icon at the top-right corner <br />to return to the HejOne+ site</p>
-			<img class="arrow" src="arrow.svg" />
+			{#if show === false}
+				<button on:click={handleClick} {disabled}> Get you reward!</button>
+			{/if}
+			{#if show === true}
+				<img class="yaw" src="handshake.gif" />
+				<h1>You did it!</h1>
+				<p>Use the close-icon at the top-right corner <br />to return to the HejOne+ site</p>
+				<img class="arrow" src="arrow.svg" />
+			{/if}
 		</div>
 	</section>
 </div>
