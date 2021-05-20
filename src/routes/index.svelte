@@ -1,4 +1,34 @@
 <script>
+	let disabled = false;
+	let promise = Promise.resolve([]);
+
+	async function fetchUsers() {
+		const response = await self.fetch('https://api.github.com/users?per_page=5');
+		//const response = await self.fetch('https://celoapp.herokuapp.com/survey');
+
+		if (response.ok) {
+			return response.json();
+		} else {
+			throw new Error();
+		}
+	}
+
+	let promiseMe;
+
+	function fetchPromise() {
+		promiseMe = fetch('https://ghibliapi.herokuapp.com/people');
+		//promiseMe = fetch('https://celoapp.herokuapp.com/survey');
+		disabled = true;
+		console.log(promiseMe);
+	}
+
+	function handleClick() {
+		// Now set it to the real fetch promise
+		// promise = fetchUsers();
+		fetchPromise();
+		disabled = true;
+	}
+
 	let questions = [
 		{
 			id: 1,
@@ -54,6 +84,19 @@
 	];
 	console.log(questions);
 </script>
+
+<!-- Stop hitting GitHub on every source edit -->
+<button on:click={handleClick} {disabled}> Load Users </button>
+
+{#await promise}
+	<p>...waiting</p>
+{:then users}
+	{#if users.length > 0}
+		<p>You did it! {users.length}</p>
+	{/if}
+{:catch error}
+	<p style="color: red">{error.message}</p>
+{/await}
 
 <main>
 	{#each questions as question}
