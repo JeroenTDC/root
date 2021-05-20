@@ -9,3 +9,9 @@
 </nav>
 
 <slot />
+
+<style>
+	nav {
+		display: none;
+	}
+</style>

@@ -23,9 +23,15 @@
 
 	{#each questions as question}
 		<div>{question.question}</div>
-		{#each question.answers as answer}
-			<div>{answer.name}</div>
-		{/each}
+		<ul>
+			{#each question.answers as answer}
+				<li>
+					<input type="radio" id="fast" name="selector" />
+					<label for="fast">{answer.name}</label>
+					<div class="radiobutton" />
+				</li>
+			{/each}
+		</ul>
 	{/each}
 
 	<p>Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
@@ -39,12 +45,12 @@
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: rgba(0, 0, 0, 0.8);
 		text-transform: uppercase;
-		font-size: 4rem;
+		font-size: 2.5rem;
 		font-weight: 100;
 		line-height: 1.1;
-		margin: 4rem auto;
+		margin: 2rem auto;
 		max-width: 14rem;
 	}
 

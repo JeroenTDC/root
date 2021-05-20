@@ -10,3 +10,120 @@
 a {
 	color: pink;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+body {
+	height: 100%;
+	background: #0078d7;
+	font-family: 'Lato', sans-serif;
+}
+
+#container {
+	display: block;
+	position: absolute;
+	margin: auto;
+	height: 430px;
+	width: 500px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	padding: 3px;
+}
+
+#header {
+	height: 140px;
+	width: 100%;
+	border-bottom: 2px solid #3b98e1;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#header img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 0px 20px 0px;
+}
+ul {
+	list-style: none;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	color: #69b7f4;
+	display: block;
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 100px;
+}
+ul li input[type='radio'] {
+	position: absolute;
+	visibility: hidden;
+}
+
+ul li label {
+	display: block;
+	position: relative;
+	font-weight: 400;
+	font-size: 1.5em;
+	padding: 25px 25px 25px 80px;
+	margin: 10px auto;
+	height: 30px;
+	z-index: 9;
+	cursor: pointer;
+	-webkit-transition: all 0.25s linear;
+}
+
+ul li:hover label {
+	color: #ffffff;
+}
+
+ul li .radiobutton {
+	display: block;
+	position: absolute;
+	border: 4px solid #69b7f4;
+	border-radius: 100%;
+	height: 30px;
+	width: 30px;
+	top: 30px;
+	left: 20px;
+	transition: border 0.25s linear;
+	-webkit-transition: border 0.25s linear;
+}
+
+ul li:hover .radiobutton {
+	border: 4px solid #ffffff;
+}
+
+ul li .radiobutton::before {
+	display: block;
+	position: absolute;
+	content: '';
+	border-radius: 100%;
+	height: 20px;
+	width: 20px;
+	top: 5px;
+	left: 5px;
+	margin: auto;
+	transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
+}
+input[type='radio']:checked ~ .radiobutton::before {
+	background: #ffffff;
+	margin: auto;
+	transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
+}
+input[type='radio']:checked ~ .radiobutton {
+	border: 4px solid #ffffff;
+}
+
+input[type='radio']:checked ~ label {
+	color: #ffffff;
+}
