@@ -131,10 +131,10 @@
 	<div class="trans-layer" id="layer-8" />
 	<section class="section" id="section-8">
 		<div class="section-content final">
-			<img class="yaw" src="/src/lib/img/handshake.gif" />
+			<img class="yaw" src="handshake.gif" />
 			<h1>You did it!</h1>
 			<p>Use the close-icon at the top-right corner <br />to return to the HejOne+ site</p>
-			<img class="arrow" src="/src/lib/img/arrow.svg" />
+			<img class="arrow" src="arrow.svg" />
 		</div>
 	</section>
 </div>
