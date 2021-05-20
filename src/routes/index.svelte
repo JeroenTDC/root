@@ -1,11 +1,33 @@
-<script lang="ts">
+<script>
 	import Counter from '$lib/Counter.svelte';
+	let questions = [
+		{
+			question: 'What is my name?',
+			type: 'radio',
+			answers: [{ name: 'Jeroen' }, { name: 'Jeppe' }]
+		},
+		{
+			question: 'What are our names?',
+			type: 'checkbox',
+			answers: [{ name: 'Jeroen' }, { name: 'Jeppe' }, { name: 'Niels' }]
+		},
+		{
+			question: 'What are our names?',
+			type: 'checkbox',
+			answers: [{ name: 'Jeroen' }, { name: 'Jeppe' }, { name: 'Niels' }]
+		}
+	];
 </script>
 
 <main>
 	<h1>Hello world!</h1>
 
-	<Counter />
+	{#each questions as question}
+		<div>{question.question}</div>
+		{#each question.answers as answer}
+			<div>{answer.name}</div>
+		{/each}
+	{/each}
 
 	<p>Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
 </main>

@@ -1,10 +1,10 @@
-<script lang="ts">
-	let count: number = 0;
+<script>
+	let count = 0;
 
-	const increment = (): void => {
+	const increment = () => {
 		count += 1;
 	};
-	const decrement = (): void => {
+	const decrement = () => {
 		count -= 1;
 	};
 </script>
