@@ -96,22 +96,48 @@
 	<p style="color: red">{error.message}</p>
 {/await}
 
-<main>
+	<div class="prev-btn"><span class="fa fa-angle-up"></span></div>
+	<div class="next-btn">Press ENTER or <span class="fa fa-angle-down">Continue</span></div>
+	<div class="nav-dots">
+		<div class="nav-dot" data-slide="1"></div>
+		<div class="nav-dot" data-slide="2"></div>
+		<div class="nav-dot" data-slide="3"></div>
+		<div class="nav-dot" data-slide="4"></div>
+		<div class="nav-dot" data-slide="5"></div>
+		<div class="nav-dot" data-slide="6"></div>
+		<div class="nav-dot" data-slide="7"></div>
+	</div>	
+
 	{#each questions as question}
-		<div class="question">
-			<div class="question-heading">{question.question}</div>
-			<ul>
-				{#each question.answers as answer, idx}
-					<li>
-						<input type="radio" id={answer} name={question.id} />
-						<label for={answer}>{answer}</label>
-						<div class="radiobutton" />
-					</li>
-				{/each}
-			</ul>
+		<div class="panel" data-slide="{question.id}">
+			<div class="trans-layer" id="layer-1"></div>
+			<section class="section" id="section-1">
+				<div class="section-content">
+					<h1>{question.question}</h1>
+					<ul>
+					{#each question.answers as answer, idx}
+						<li>
+							<input type="radio" id={answer} name={question.id} />
+							<label for={answer}>{answer}</label>
+							<div class="radiobutton" />
+						</li>
+					{/each}
+				</ul>
+				</div>
+			</section>
 		</div>
 	{/each}
-</main>
+	<div class="panel topLayer" data-slide="8">
+		<div class="trans-layer" id="layer-8"></div>
+		<section class="section" id="section-8">
+			<div class="section-content final">
+				<img class="yaw" src="src/lib/img/handshake.gif">
+				<h1>You did it!</h1>
+				<p>Use the close-icon at the top-right corner <br>to return to the HejOne+ site</p>
+				<img class="arrow" src="src/lib/img/arrow.svg">
+			</div>
+		</section>
+	</div>
 
 <style lang="scss">
 	main {
