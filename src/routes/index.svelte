@@ -112,7 +112,7 @@
 			{#if show === false}
 				<img class="yaw" src="handshake.gif" />
 				<h1>Almost there..</h1>
-				<button class="doit" on:click={handleClick} {disabled}> Get you reward!</button>
+				<button class="doit" on:click={handleClick} {disabled}> Get your reward!</button>
 			{/if}
 			{#if show === true}
 				<img class="yaw" src="handshake.gif" />
