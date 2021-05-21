@@ -5,6 +5,21 @@
 
 	let promiseMe;
 
+	let correctAnswer = true;
+
+	function onClickAnswer(valCorrect) {
+		/* if (valCorrect === true) {
+			wrong = true;
+		} else {
+			wrong = false;
+		} */
+		console.log(valCorrect);
+		correctAnswer = valCorrect;
+		//console.log('wrong is what?: ', wrong);
+	}
+
+	console.log('answer is: ', correctAnswer);
+
 	function fetchPromise() {
 		promiseMe = fetch('https://celoapp.herokuapp.com/survey');
 		console.log(promiseMe);
@@ -17,57 +32,71 @@
 		disabled = true;
 		show = true;
 	}
+	let compare;
 
 	let questions = [
 		{
 			id: 1,
 			question: 'Beholder jeg mit nuværende mobilnummer i den nye One+ løsning?',
 			answers: [
-				'Ja - med mindre din arbejdsgiver fravælger det',
-				'Nej - vi bliver nødsaget til at give dig et nyt nummer'
+				{ correct: true, text: 'Ja - med mindre din arbejdsgiver fravælger det' },
+				{ correct: false, text: 'Nej - vi bliver nødsaget til at give dig et nyt nummer' }
 			]
 		},
 		{
 			id: 2,
 			question: 'Kan man godt have One+ uden mobiltelefon?',
 			answers: [
-				'Ja, man kan også benytte en bordtelefon',
-				'Nej, da One + er et mobilt abonnement, kan man kun bruge mobiltelefonen'
+				{ correct: true, text: 'Ja, man kan også benytte en bordtelefon' },
+				{
+					correct: false,
+					text: 'Nej, da One + er et mobilt abonnement, kan man kun bruge mobiltelefonen'
+				}
 			]
 		},
 		{
 			id: 3,
 			question: 'Får jeg automatisk 5G med mit mobilabonnement?',
 			answers: [
-				'Selvfølgelig, One+ er førdt med 5G',
-				'Måske, det afhænger hvilket abonnement din virksomhed'
+				{ correct: true, text: 'Selvfølgelig, One+ er førdt med 5G' },
+				{ correct: false, text: 'Måske, det afhænger hvilket abonnement din virksomhed' }
 			]
 		},
 		{
 			id: 4,
 			question: 'Hvor mange forskellige mobilabonnementer er der i One+?',
 			answers: [
-				'4 - Basis, Standard, Professionel, Premium',
-				'3 - Standard, Professionel og Premium',
-				'2 - Professionel og Premium'
+				{ correct: false, text: '4 - Basis, Standard, Professionel, Premium' },
+				{ correct: true, text: '3 - Standard, Professionel og Premium' },
+				{ correct: false, text: '2 - Professionel og Premium' }
 			]
 		},
 		{
 			id: 5,
 			question: 'Hvor mange datadelingskort kan man på mobilabonnementet: Mobil Premium?',
-			answers: ['Op til 5 datalingskort', 'Op til 4 datadelingskort', 'Op til 3 datadelingskort']
+			answers: [
+				{ correct: false, text: 'Op til 5 datalingskort' },
+				{ correct: true, text: 'Op til 4 datadelingskort' },
+				{ correct: false, text: 'Op til 3 datadelingskort' }
+			]
 		},
 		{
 			id: 6,
 			question: 'Har alle abonnementerne følgende feature >fri tale, sms og mms<?',
-			answers: ['Ja', 'Nej']
+			answers: [
+				{ correct: true, text: 'Ja' },
+				{ correct: false, text: 'Nej' }
+			]
 		},
 		{
 			id: 7,
 			question: 'Hvad er TDC Erhverv Assist?',
 			answers: [
-				'En personlig sekretær fra TDC',
-				'En app med mange fede features, så som viderestilling, Optag opkald'
+				{ correct: false, text: 'En personlig sekretær fra TDC' },
+				{
+					correct: true,
+					text: 'En app med mange fede features, så som viderestilling, Optag opkald'
+				}
 			]
 		}
 	];
@@ -95,12 +124,18 @@
 				<ul>
 					{#each question.answers as answer, idx}
 						<li>
-							<input type="radio" id={answer} name={question.id} />
-							<label for={answer}>{answer}</label>
+							<input type="radio" id={answer.text} name={question.id} />
+							<label on:click={() => onClickAnswer(answer.correct)} for={answer.text}
+								>{answer.text} - {answer.correct}</label
+							>
 							<div class="radiobutton" />
 						</li>
 					{/each}
 				</ul>
+				{#if correctAnswer == false}
+					<p class="wrong">your fucking wrong</p>
+				{/if}
+				{compare}
 			</div>
 		</section>
 	</div>
@@ -112,7 +147,7 @@
 			{#if show === false}
 				<img class="yaw" src="handshake.gif" />
 				<h1>Almost there..</h1>
-				<button class="doit" on:click={handleClick} {disabled}> Get your reward!</button>
+				<button class="doit" on:click={handleClick} {disabled}>Get your reward!</button>
 			{/if}
 			{#if show === true}
 				<img class="yaw" src="handshake.gif" />
